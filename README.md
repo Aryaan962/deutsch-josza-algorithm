@@ -18,4 +18,12 @@ In the case of my implimentation, I created specific names for each of these sep
 # Implimentation of The Algorithm
 I recreated this circuit in the jupyter notebook program on my computer. We are going to be creating a quantum circuit on the IBM platform through [code](https://github.com/Aryaan962/deutsch-josza-algorithm/edit/master/Python%20Code) and simulate how it would act and give results. I will be showing the simulated results and the actual results if it were to run the code on a quantum computer.
 
+So lets start with the first part which is just importing the files that we will need for this porject.
+1. We will need qiskit because that is the software file that we will be using
+2. %matplotlib is just a library of charts and diagrams we can use, this will make out circuits look better when we use the draw command
+3. And finally the file that we will use to plot the histogram chart which we use when we are trying to visually analyze our results
+
+Our next task is to decide how many qubits and bits we want to use for each register of out quantum circuit. For our example, we are replicating the most basic form of this algorithm which is a two qubit algorithm and a single bit just to have a place where we can store the measurement of our qubit once we are done.
+
+The final component of this first block is deciding which type of function you want to try out. As I explained above and inside the comment there are four choices. Constant0, constant1, balanced0 and balanced1. You will notice later that every constant function has the same measured value for the first qubit (0) and every balanced function will also result in the same measured value for the first qubit (1).
 ![alt text](images/Deutsch-Josza1.PNG)
