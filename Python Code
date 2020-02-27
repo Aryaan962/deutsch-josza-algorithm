@@ -1,11 +1,19 @@
+# In this step I am just importing all the files that I will need to recreate this circuit on the IBM qiskit platform
 from qiskit import *
 %matplotlib inline
 from qiskit.tools.visualization import plot_histogram
+
+# Initializing variables like the amount of qubits (q) and the amount of classical bits (c)
 q = 2
 c = 1
-# The type of function is either constant or balanced and the two types are 0 and 1
+
+# The type of function is either constant or balanced and the two types are 0 and 1, read the read me file for a more decriptive
+# explanation
 function = "balanced1"
+
+# Creating the quantum circuit with qubits and bits
 circuit = QuantumCircuit(q, c)
+
 def operation(function):
     # constant0 would be the function that would make both qubits initialized to the 0 state for both of the qubits,the
     # q[1] started in the the 1 state so I just apply the NOT gate to qubit 1 to make it into the 0 state
@@ -13,12 +21,14 @@ def operation(function):
         circuit.h(0)
         circuit.x(0)
         circuit.h(0)
+    
     # constant1 would be the function that would make both qubits initialized to the 1 state for both of the qubits,
     # q[0] started in the the 0 state so I just apply the NOT gate to qubit 0 to make it into the 1 state
     if (function == "constant1"):
         circuit.h(1)
         circuit.x(1)
         circuit.h(1)
+    
     # balanced0 would be the function that would give the opposite of whatever you put in, it would be the NOT case
     if (function == "balanced0"):
         circuit.h(0)
@@ -27,8 +37,10 @@ def operation(function):
         circuit.x(1)
         circuit.h(0)
         circuit.h(1)
+    
     # balanced1 would be the function that would do nothing, it would be the identity case
 
+# Applying other quantum gates to make the circuit work
 circuit.x(1)
 circuit.barrier()
 circuit.h(0)
@@ -40,13 +52,14 @@ circuit.cx(0, 1)
 circuit.barrier()
 circuit.h(0)
 
+# Measures the qubits on a circuit
 circuit.measure(0, 0)
 
 circuit.draw('mpl')
 
+# Running the circuit on a simulator which will give you theoretical results
 simulator = Aer.get_backend('qasm_simulator')
 result = execute(circuit, backend = simulator, shots = 10000).result()
 counts = result.get_counts()
 from qiskit.tools.visualization import plot_histogram
 plot_histogram(counts)
-
