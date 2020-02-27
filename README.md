@@ -18,6 +18,7 @@ In the case of my implimentation, I created specific names for each of these sep
 # Implimentation of The Algorithm
 I recreated this circuit in the jupyter notebook program on my computer. We are going to be creating a quantum circuit on the IBM platform through [code](https://github.com/Aryaan962/deutsch-josza-algorithm/edit/master/Python%20Code) and simulate how it would act and give results. I will be showing the simulated results and the actual results if it were to run the code on a quantum computer.
 
+## Block 1/6
 So lets start with the first part which is just importing the files that we will need for this porject.
 1. We will need qiskit because that is the software file that we will be using
 2. %matplotlib is just a library of charts and diagrams we can use, this will make out circuits look better when we use the draw command
@@ -26,4 +27,28 @@ So lets start with the first part which is just importing the files that we will
 Our next task is to decide how many qubits and bits we want to use for each register of out quantum circuit. For our example, we are replicating the most basic form of this algorithm which is a two qubit algorithm and a single bit just to have a place where we can store the measurement of our qubit once we are done.
 
 The final component of this first block is deciding which type of function you want to try out. As I explained above and inside the comment there are four choices. Constant0, constant1, balanced0 and balanced1. You will notice later that every constant function has the same measured value for the first qubit (0) and every balanced function will also result in the same measured value for the first qubit (1).
+
 ![alt text](images/Deutsch-Josza1.PNG)
+
+## Block 2/6
+This next component is the part where we actually initialize the circuit and create the black box function.
+
+The first command we call is creating a variable and creating a quantum circuit inside with (q) qubits and (c) classical bits. At this point there are no gates on the circuit, it is all blank.
+
+The second thing we do in this block of code is we create the operation function, also known as the blackbox function, which takes the perameter function in as input. This perameter is defined from the first block of code which helps this function determine which type of blackbox it will be testing out. Depending on which function you decide to add in, it will apply the gates accordingly. There are furthur more detailed explanations above every single line of code within the circuit so refer to that for more information.
+
+![alt text](images/Deutsch-Josza2.PNG)
+
+## Block 3/6
+This next block is the block where we start applying gates! The circuit.barrier() lines of code are basically just methods of making the circuit look clean. It creates the dividers in the circuit.
+
+First we start off by flipping the last qubit (q[1]) from the state 0 to 1 then we apply a hadamard gate to both of the qubits. THen we apply the blackbox function, aka. the operation funciton and give it the parameter function which was defined in the first block. Once again, this is called the blackbox function because it the circuit does not know what it is and it does not matter what it is for the circuit to work.
+
+Then we entangle the qubits using the CNOT gate from q[0] (target) to q[1] (control). All of this computation is happening in the hadamard basis as that is one of the first gates we applied to the qubits so then we apply the hadamard gate once again to the first qubit. Because it is a unitary gate, it will out the first qubit back into the 0, 1 state and we will be able to measure it and store it onto classical bit 0. This is done by the circuit.meeasure(0, 0).
+
+![alt text](images/Deutsch-Josza3.PNG)
+
+## Block 4/6
+This basically just draws out the circuit so far. The following images are the circuits of a constant case of the blackbox and a balanced case of the black box respectively. Try to understand it yourself before you see the results!
+
+![alt text](images/Deutsch-Josza4-constant.PNG) ![alt text](images/Deutsch-Josza4-balanced.PNG)
