@@ -49,3 +49,4 @@ result = execute(circuit, backend = simulator, shots = 10000).result()
 counts = result.get_counts()
 from qiskit.tools.visualization import plot_histogram
 plot_histogram(counts)
+
