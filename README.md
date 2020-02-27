@@ -68,3 +68,12 @@ And finally, we are basically done. This is the finally code where we run a simu
 
 #### Balanced case
 ![alt text](images/Deutsch-Josza5-balanced.PNG)
+
+# Block 6/6
+And finally, for the coolest part, the simulation on actual quantum computers. The following histogram is displaying informtion based on the quantum circuit that I coded and is using an actual quantum computer as a backend instead of simulating it and using math to determine the theoretical output. These graphs are not as acurate as the theoretical calculation which is because quantum computers are slightly flawed. Through systematic errors such as decoherence, quantum computers willn ever be completely acurate which is shown here through the following graphs of the constant and balanced case of this circuit.
+
+#### Constant case
+![alt text](images/Deutsch-Josza6-constant.PNG)
+
+#### Balanced case
+![alt text](images/Deutsch-Josza6-balanced.PNG)
