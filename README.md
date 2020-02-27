@@ -51,4 +51,20 @@ Then we entangle the qubits using the CNOT gate from q[0] (target) to q[1] (cont
 ## Block 4/6
 This basically just draws out the circuit so far. The following images are the circuits of a constant case of the blackbox and a balanced case of the black box respectively. Try to understand it yourself before you see the results!
 
-![alt text](images/Deutsch-Josza4-constant.PNG) ![alt text](images/Deutsch-Josza4-balanced.PNG)
+This case is the constant0 case and because q[0] started off in the 0 state and q[1] started in the 1 state, the circuit will hadamard q[1] and flip it into the 0 state and rehadamard it to replicate what would happen in a black box circuit.
+
+#### Constant case
+![alt text](images/Deutsch-Josza4-constant.PNG) 
+
+This case is the balanced0 case. This is the identity case where nothing happens and the inputs are the outputs so no gates were added.
+#### Balanced case
+![alt text](images/Deutsch-Josza4-balanced.PNG)
+
+## Block 5/6
+And finally, we are basically done. This is the finally code where we run a simulator backend provided by qasm. This tells us what the theoretical probablity is for every state possible. For the constatnt case, the simulator is run 100000 times and for everyone, it is theorized that the result of the measurement of q[0] is 0. For the balanced case, the simulator shows that the measurement for q[0] would give a result of 1.
+
+#### Constant case
+![alt text](images/Deutsch-Josza5-constant.PNG)
+
+#### Balanced case
+![alt text](images/Deutsch-Josza5-balanced.PNG)
