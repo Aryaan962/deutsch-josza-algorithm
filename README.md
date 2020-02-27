@@ -77,3 +77,5 @@ And finally, for the coolest part, the simulation on actual quantum computers. T
 
 #### Balanced case
 ![alt text](images/Deutsch-Josza6-balanced.PNG)
+
+#### And that is all for now.
