@@ -18,4 +18,4 @@ In the case of my implimentation, I created specific names for each of these sep
 # Implimentation of The Algorithm
 I recreated this circuit in the jupyter notebook program on my computer. We are going to be creating a quantum circuit on the IBM platform through [code](https://github.com/Aryaan962/deutsch-josza-algorithm/edit/master/Python%20Code) and simulate how it would act and give results. I will be showing the simulated results and the actual results if it were to run the code on a quantum computer.
 
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png)
