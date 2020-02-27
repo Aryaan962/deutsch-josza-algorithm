@@ -1,0 +1,51 @@
+from qiskit import *
+%matplotlib inline
+from qiskit.tools.visualization import plot_histogram
+q = 2
+c = 1
+# The type of function is either constant or balanced and the two types are 0 and 1
+function = "balanced1"
+circuit = QuantumCircuit(q, c)
+def operation(function):
+    # constant0 would be the function that would make both qubits initialized to the 0 state for both of the qubits,the
+    # q[1] started in the the 1 state so I just apply the NOT gate to qubit 1 to make it into the 0 state
+    if (function == "constant0"):
+        circuit.h(0)
+        circuit.x(0)
+        circuit.h(0)
+    # constant1 would be the function that would make both qubits initialized to the 1 state for both of the qubits,
+    # q[0] started in the the 0 state so I just apply the NOT gate to qubit 0 to make it into the 1 state
+    if (function == "constant1"):
+        circuit.h(1)
+        circuit.x(1)
+        circuit.h(1)
+    # balanced0 would be the function that would give the opposite of whatever you put in, it would be the NOT case
+    if (function == "balanced0"):
+        circuit.h(0)
+        circuit.h(1)
+        circuit.x(0)
+        circuit.x(1)
+        circuit.h(0)
+        circuit.h(1)
+    # balanced1 would be the function that would do nothing, it would be the identity case
+
+circuit.x(1)
+circuit.barrier()
+circuit.h(0)
+circuit.h(1)
+circuit.barrier()
+operation(function)
+circuit.barrier()
+circuit.cx(0, 1)
+circuit.barrier()
+circuit.h(0)
+
+circuit.measure(0, 0)
+
+circuit.draw('mpl')
+
+simulator = Aer.get_backend('qasm_simulator')
+result = execute(circuit, backend = simulator, shots = 10000).result()
+counts = result.get_counts()
+from qiskit.tools.visualization import plot_histogram
+plot_histogram(counts)
