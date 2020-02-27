@@ -10,7 +10,6 @@ c = 1
 # The type of function is either constant or balanced and the two types are 0 and 1, read the read me file for a more decriptive
 # explanation
 function = "balanced1"
-
 # Creating the quantum circuit with qubits and bits
 circuit = QuantumCircuit(q, c)
 
@@ -54,12 +53,22 @@ circuit.h(0)
 
 # Measures the qubits on a circuit
 circuit.measure(0, 0)
-
-circuit.draw('mpl')
-
 # Running the circuit on a simulator which will give you theoretical results
 simulator = Aer.get_backend('qasm_simulator')
 result = execute(circuit, backend = simulator, shots = 10000).result()
 counts = result.get_counts()
 from qiskit.tools.visualization import plot_histogram
 plot_histogram(counts)
+
+# Runs the circuit on a quantum computer, real results off real hardware!
+IBMQ.load_account()
+provider = IBMQ.get_provider("ibm-q")
+print("Running...")
+
+from qiskit.tools.monitor import job_monitor
+qcomp = provider.get_backend("ibmq_16_melbourne")
+job = execute(circuit, backend = qcomp)
+job_monitor(job)
+result = job.result()
+answer = result.get_counts(circuit)
+plot_histogram(answer)
